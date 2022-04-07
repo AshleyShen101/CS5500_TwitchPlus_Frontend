@@ -64,3 +64,24 @@ const renderCardGrid = (data, loggedIn) => {
     )
   }
   
+  const Home = ({ resources, loggedIn }) => {
+    const { VIDEO, STREAM, CLIP } = resources;
+   
+    return (
+      <Tabs 
+        defaultActiveKey={tabKeys.Streams} 
+      >
+        <TabPane tab="Streams" key={tabKeys.Streams} style={{ height: '680px', overflow: 'auto' }} forceRender={true}>
+          {renderCardGrid(STREAM, loggedIn)}
+        </TabPane>
+        <TabPane tab="Videos" key={tabKeys.Videos} style={{ height: '680px', overflow: 'auto' }} forceRender={true}>
+          {renderCardGrid(VIDEO, loggedIn)}
+        </TabPane>
+        <TabPane tab="Clips" key={tabKeys.Clips} style={{ height: '680px', overflow: 'auto' }} forceRender={true}>
+          {renderCardGrid(CLIP, loggedIn)}
+        </TabPane>
+      </Tabs>
+    );
+  }
+   
+  export default Home;
