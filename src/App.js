@@ -1,13 +1,48 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Button, Layout, message } from 'antd';
+import Login from './components/Login';
+import Register from './components/Register';
+import { logout } from './utils';
 
 const { Header, Content, Sider } = Layout;
 
 class App extends React.Component {
+    state = {
+        loggedIn: false
+    }
+
+    signinOnSuccess = () => {
+        this.setState({
+            loggedIn: true
+        })
+    }
+
+    signoutOnClick = () => {
+        logout()
+            .then(() => {
+                this.setState({
+                    loggedIn: false
+                })
+                message.success(`Successfull signed out`);
+            }).catch((err) => {
+            message.error(err.message);
+        })
+    }
+
     render = () => (
         <Layout>
             <Header>
-                {'Header'}
+                {
+                    this.state.loggedIn ?
+                        <Button shape="round" onClick={this.signoutOnClick}>
+                            Logout</Button> :
+                        (
+                            <div>
+                                <Login onSuccess={this.signinOnSuccess} />
+                                <Register />
+                            </div>
+                        )
+                }
             </Header>
             <Layout>
                 <Sider width={300} className="site-layout-background">
