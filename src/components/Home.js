@@ -35,3 +35,32 @@ const renderCardTitle = (item, loggedIn) => {
   )
 }
  
+const renderCardGrid = (data, loggedIn) => {
+    return (
+      <List
+        grid={{
+          xs: 1,
+          sm: 2,
+          md: 4,
+          lg: 4,
+          xl: 6,
+        }}
+        dataSource={data}
+        renderItem={item => (
+          <List.Item style={{ marginRight: '20px' }}>
+            <Card
+              title={renderCardTitle(item, loggedIn)}
+            >
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <img 
+                  alt="Placeholder"
+                  src={processUrl(item.thumbnail_url)}
+                />
+              </a>
+            </Card>
+          </List.Item>
+        )}
+      />
+    )
+  }
+  
