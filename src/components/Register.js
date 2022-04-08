@@ -34,7 +34,7 @@ class Register extends React.Component {
 
     render = () => {
         return (
-            <div>
+            <>
                 <Button shape="round" type="primary" onClick={this.signupOnClick}>
                     Register</Button>
                 <Modal
@@ -88,7 +88,7 @@ class Register extends React.Component {
                         </Form.Item>
                     </Form>
                 </Modal>
-            </div>
+            </>
         )
     }
 }
