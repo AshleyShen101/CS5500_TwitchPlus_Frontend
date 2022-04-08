@@ -1,7 +1,7 @@
 const SERVER_ORIGIN = '';
 
-// login api
 const loginUrl = `${SERVER_ORIGIN}/login`;
+
 export const login = (credential) => {
     return fetch(loginUrl, {
         method: 'POST',
@@ -19,8 +19,8 @@ export const login = (credential) => {
     })
 }
 
-// register api
 const registerUrl = `${SERVER_ORIGIN}/register`;
+
 export const register = (data) => {
     return fetch(registerUrl, {
         method: 'POST',
@@ -35,8 +35,8 @@ export const register = (data) => {
     })
 }
 
-// logout api
 const logoutUrl = `${SERVER_ORIGIN}/logout`;
+
 export const logout = () => {
     return fetch(logoutUrl, {
         method: 'POST',
@@ -48,8 +48,8 @@ export const logout = () => {
     })
 }
 
-// topGame api
 const topGamesUrl = `${SERVER_ORIGIN}/game`;
+
 export const getTopGames = () => {
     return fetch(topGamesUrl).then((response) => {
         if (response.status !== 200) {
@@ -60,8 +60,8 @@ export const getTopGames = () => {
     })
 }
 
-// getGameDetails api
 const getGameDetailsUrl = `${SERVER_ORIGIN}/game?game_name=`;
+
 const getGameDetails = (gameName) => {
     return fetch(`${getGameDetailsUrl}${gameName}`).then((response) => {
         if (response.status !== 200) {
@@ -72,8 +72,8 @@ const getGameDetails = (gameName) => {
     });
 }
 
-// searchGameById api
 const searchGameByIdUrl = `${SERVER_ORIGIN}/search?game_id=`;
+
 export const searchGameById = (gameId) => {
     return fetch(`${searchGameByIdUrl}${gameId}`).then((response) => {
         if (response.status !== 200) {
@@ -83,7 +83,6 @@ export const searchGameById = (gameId) => {
     })
 }
 
-// searchGameByName api
 export const searchGameByName = (gameName) => {
     return getGameDetails(gameName).then((data) => {
         if (data && data.id) {
@@ -94,8 +93,8 @@ export const searchGameByName = (gameName) => {
     })
 }
 
-// favoriteItem api
 const favoriteItemUrl = `${SERVER_ORIGIN}/favorite`;
+
 export const addFavoriteItem = (favItem) => {
     return fetch(favoriteItemUrl, {
         method: 'POST',
@@ -111,7 +110,6 @@ export const addFavoriteItem = (favItem) => {
     })
 }
 
-// deletefavoriteItem api
 export const deleteFavoriteItem = (favItem) => {
     return fetch(favoriteItemUrl, {
         method: 'DELETE',
@@ -127,7 +125,6 @@ export const deleteFavoriteItem = (favItem) => {
     })
 }
 
-// getFavoriteItem api
 export const getFavoriteItem = () => {
     return fetch(favoriteItemUrl, {
         credentials: 'include',
@@ -140,8 +137,8 @@ export const getFavoriteItem = () => {
     })
 }
 
-// getRecommendedItems api
 const getRecommendedItemsUrl = `${SERVER_ORIGIN}/recommendation`;
+
 export const getRecommendations = () => {
     return fetch(getRecommendedItemsUrl, {
         credentials: 'include',
